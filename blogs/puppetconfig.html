@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>欧阳朝曦的博客主页</title>
+    <title>Ouyangqiong.GitHub.io by ouyangqiong</title>
 
     <link rel="stylesheet" href="../stylesheets/styles.css">
     <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
@@ -15,16 +15,24 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>Blogs</h1>
-        <p><a href="linux.html">Linux Blog</a></p>
-        <p><a href="puppet1.html">Puppet</a></p>
+        <h1>Ouyangqiong.GitHub.io</h1>
+        <p><a href="main.html">Blog For OuyangQiong</a></p>
       </header>
       <section>
-        <h3>
-        </h3>
-          <p>天行健，君子以自强不息</p>
-          <p> 地势坤，君子以厚德载物</p>
-        </section>
+      	<h3>puppet.conf</h3>
+      	<p>默认$vardir为/var/lib/puppet</p>
+      	<pre><code>[main]
+	logdir = /var/log/puppet #默认日志存放路径
+	rundir = /var/run/puppet #pid存放路径
+	ssldir = $vardir/ssl #证书存放目录
+[agent]
+	classfile = $vardir/classes.txt
+	localconfig = $vardir/localconfig
+	server = puppet.domain.com #设置agent认证连接master端的服务器名称
+[master]
+			
+      	</code></pre>
+      </section>
       <footer>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>

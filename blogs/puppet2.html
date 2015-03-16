@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Ouyangqiong.GitHub.io by ouyangqiong</title>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    	li{
+    		list-style-type:decimal
+    	}
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Puppet Installation(Fedora)</h1>
+        <p><a href="main.html">Blog For OuyangQiong</a></p>
+        <p><a href="puppetconfig.html">Puppet configuration presentation</p>
+      </header>
+      <section>
+    	<h3>申请证书（CA）</h3>
+    	<p>设置master自动签发所有的证书: 只需要在/etc/puppet 目录下创建 autosign.conf,不需要修改 /etc/puppet/puppet.conf，因为默认的autosign.conf 文件的位置没有修改</p>
+      	<pre><code>cat > /etc/puppet/autosign.conf << EOF
+>*.domain.com
+>EOF</code></pre>
+		<h3>puppet agent 测试</h3>
+		 puppet agent为了详细了解注册的过程和日后排错,可以增加参数
+			<ul>
+				<li>--no-daemonize 前台输出日志</li>
+				<li>--verbose 输入更加详细的日志</li>
+				<li>–-debug 更加详细的日志，排错的时候使用</li>
+				<li>–-test 表示测试，就带一个–test参数就可以</li>
+			</ul> 
+		<pre><code># puppet agent --no-daemonize --verbose --onetime --debug</code></pre>
+		<p>由于配置了自动签发证书，所以证书被直接签发，在服务端执行下面的命令查看所有证书，带"+"号的就是签发成功的</p>
+		<pre><code>[root@puppet puppet]# puppet cert list --all
++ "agent.domain.com"        (SHA256) 65:87:F7:5E:4D:6B:96:08:75:98:1B:9C:1D:7C:5E:1D:45:20:EC:EF:1F:0C:2C:AA:FE:BE:4B:C3:39:A0:80:01
++ "puppet.domain.com"       (SHA256) 77:37:25:BA:0E:66:D8:D7:40:BE:7C:A7:38:FD:76:72:E9:D4:B0:9B:68:50:FC:29:39:47:CE:7D:DB:2F:5C:B0 (alt names: "DNS:puppet", "DNS:puppet.domain.com")
++ "puppetmaster.domain.com" (SHA256) F9:0D:C1:36:6A:29:F5:93:10:AA:B3:67:2A:B9:1C:D0:DD:DA:EC:6E:90:61:D8:4E:08:19:3C:3B:C2:D0:21:7F (alt names: "DNS:puppet", "DNS:puppet.domain.com", "DNS:puppetmaster.domain.com")
+</code></pre>
+		附：
+		<ul>
+			<li>puppet cert --sign agent.domain.com 可以用于服务器端签发指定域名证书</li>
+			<li>puppet cert --sign --all 可以用于服务器端签发所有证书</li>
+		</ul>
+      </section>
+      <footer>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
