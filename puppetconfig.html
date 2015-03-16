@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Ouyangqiong.GitHub.io by ouyangqiong</title>
+
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Ouyangqiong.GitHub.io</h1>
+        <p><a href="main.html">Blog For OuyangQiong</a></p>
+      </header>
+      <section>
+      	<h3>puppet.conf</h3>
+      	<p>默认$vardir为/var/lib/puppet</p>
+      	<pre><code>[main]
+	logdir = /var/log/puppet #默认日志存放路径
+	rundir = /var/run/puppet #pid存放路径
+	ssldir = $vardir/ssl #证书存放目录
+[agent]
+	classfile = $vardir/classes.txt
+	localconfig = $vardir/localconfig
+	server = puppet.domain.com #设置agent认证连接master端的服务器名称
+[master]
+			
+      	</code></pre>
+      </section>
+      <footer>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
